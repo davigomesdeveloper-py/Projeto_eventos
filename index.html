@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Villani Eventos</title>
+  <!-- GUIA: segunda fonte (títulos). A fonte dos textos é Arial, já no CSS. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- GUIA: cabeçalho. Troque o texto do logo por uma imagem se tiver o arquivo. -->
+  <header class="cabecalho">
+    <a class="logo" href="#inicio">Villani <span>eventos</span></a>
+    <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="#servicos">Service</a>
+      <a href="#inicio">Home</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+    <a class="botao-contato" href="#contato">contato</a>
+  </header>
+
+  <main>
+    <!-- GUIA: hero. Foto de fundo = img.hero-foto; painel verde com corte diagonal = .hero-painel. -->
+    <section class="hero" id="inicio">
+      <img class="hero-foto" alt="Foto de fundo do hero: salão de festas decorado com iluminação cênica">
+      <div class="hero-painel">
+        <h1>celebrações que se tornam memória</h1>
+        <p>Casamentos, formaturas e eventos corporativos planejados do convite ao último brinde.</p>
+        <a class="botao" href="#contato">Faça seu pedido</a>
+      </div>
+    </section>
+
+    <!-- GUIA: serviços. Um card por serviço; troque o alt pela descrição da foto escolhida. -->
+    <section class="servicos" id="servicos">
+      <h2>Eventos para cada ocasião</h2>
+      <p class="servicos-texto">Do primeiro rascunho à pista de dança, a Villani cuida de cada detalhe para você aproveitar a sua festa.</p>
+      <ul class="cards">
+        <li class="card"><img src="imagens/casamento.jpg" alt="Foto de casamento"><h3>Casamentos</h3></li>
+        <li class="card"><img src="imagens/Formatura.jpg" alt="Foto de formatura"><h3>Formaturas</h3></li>
+        <li class="card"><img src="imagens/corporativo.jpg" alt="Foto de festa corporativa"><h3>Festas corporativas</h3></li>
+        <li class="card"><img src="imagens/evento.jpg" alt="Foto de evento"><h3>Eventos</h3></li>
+      </ul>
+    </section>
+
+    <!-- GUIA: sobre. Texto à esquerda, foto deslocada à direita. Buffets e decoração aparecem só aqui, de forma discreta. -->
+    <section class="sobre" id="sobre">
+      <div class="sobre-texto">
+        <h2>Quem faz a festa acontecer</h2>
+        <p>A Villani Eventos reúne uma equipe que conhece cada etapa de uma celebração. Além da organização, também cuidamos de buffets e da decoração, para quem quiser tudo resolvido no mesmo lugar.</p>
+        <p>Conte o que você imagina e a gente mostra como chegar lá.</p>
+      </div>
+      <img src="imagens/equipe.jpg" class="sobre-foto" alt="Foto da equipe Villani montando um evento">
+    </section>
+
+    <!-- GUIA: equipe. Os botões trocam as fotos de cima; as pessoas de cada equipe ficam em js/script.js. -->
+    <section class="equipe" id="equipe">
+      <div class="equipe-topo">
+        <h2>Conheça o nosso time</h2>
+        <div class="equipe-fotos" id="equipe-fotos" aria-live="polite"></div>
+      </div>
+      <div class="equipe-categorias">
+        <button type="button" class="categoria" data-equipe="liderancas" aria-pressed="true"><img src="imagens/liderança.jpg" alt="Foto ilustrativa de Lideranças"><span>Lideranças</span></button>
+        <button type="button" class="categoria" data-equipe="buffets" aria-pressed="false"><img src="imagens/buffet.jpg" alt="Foto ilustrativa de Buffets"><span>Buffets</span></button>
+        <button type="button" class="categoria" data-equipe="decoracoes" aria-pressed="false"><img src="imagens/decoração.jpg" alt="Foto ilustrativa de Decorações"><span>Decorações</span></button>
+      </div>
+    </section>
+
+    <!-- GUIA: destaques de eventos. Blocos alternados de foto e texto; troque o texto por histórias reais. -->
+    <section class="eventos" id="eventos">
+      <article class="destaque destaque-verde">
+        <div class="destaque-texto">
+          <h2>Um casamento ao pôr do sol</h2>
+          <p>Cerimônia, jantar e pista de dança no mesmo cenário, com iluminação pensada para cada momento da noite.</p>
+        </div>
+        <img src="imagens/por_do_sol.jpg" alt="Foto do evento em destaque: casamento ao pôr do sol">
+      </article>
+      <article class="destaque destaque-escuro">
+        <img src="imagens/festa_formatura.jpg" alt="Foto do evento em destaque: formatura">
+        <div class="destaque-texto">
+          <h2>Formatura para quinhentos convidados</h2>
+          <p>Credenciamento, cerimônia e festa organizados em um só cronograma, sem fila e sem correria.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- GUIA: rodapé. Atualize e-mail, telefone, endereço e redes. -->
+  <footer class="rodape" id="contato">
+    <div class="rodape-chamada">
+      <h2>Vamos criar o seu próximo evento</h2>
+      <p>Conte o que você está planejando e a gente transforma a ideia numa festa que as pessoas lembram.</p>
+      <a class="botao" href="mailto:contato@exemplo.com">Faça sua reserva</a>
+    </div>
+    <div class="rodape-colunas">
+      <div>
+        <p class="rodape-logo">Villani <span>eventos</span></p>
+        <p>Eventos extraordinários para pessoas que merecem.</p>
+      </div>
+      <div>
+        <h3>Serviços</h3>
+        <p>Casamentos</p>
+        <p>Formaturas</p>
+        <p>Festas corporativas</p>
+        <p>Eventos</p>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <p>contato@exemplo.com</p>
+        <p>(00) 00000-0000</p>
+        <p>Cidade, Estado</p>
+      </div>
+      <div>
+        <h3>Redes sociais</h3>
+        <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <p class="rodape-fim">© 2026 Villani Eventos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

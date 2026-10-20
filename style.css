@@ -1,0 +1,448 @@
+/* GUIA: cores. Troque aqui para mudar o site inteiro. */
+:root {
+  --verde: #0f6b6b;
+  --verde-escuro: #0a4747;
+  --verde-claro: #d9ebea;
+  --grafite: #2a2b2d;
+  --branco: #ffffff;
+  --texto: #1f2a2a;
+}
+
+/* GUIA: base. Arial nos textos; Playfair Display nos títulos. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  line-height: 1.6;
+  background: var(--branco);
+}
+h1, h2, h3, .logo, .rodape-logo {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+}
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--verde-claro);
+  outline-offset: 3px;
+}
+
+/* GUIA: lugares de imagem. Enquanto não houver foto, aparece o alt sobre um fundo cinza. */
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #c9d2d2;
+  color: #3d4a4a;
+  font-size: 0.9rem;
+}
+
+.botao,
+.botao-contato {
+  padding: 0.8rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease;
+  background: var(--branco);
+  color: var(--texto);
+  border-radius: 999px;
+}
+
+.botao::before,
+.botao-contato::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--grafite);
+  color: white;
+  transform: translateX(-101%);
+  transition: transform 0.35s ease;
+}
+.botao:hover,
+.botao-contato:hover {
+  color: var(--branco);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.botao:hover::before,
+.botao-contato:hover::before {
+  transform: translateX(0);
+}
+
+/* GUIA: cabeçalho sobre o hero. */
+.cabecalho {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 5vw;
+  border-radius: 0 0 70px 70px;
+  color: var(--branco);
+  background: rgba(10, 71, 71, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.logo {
+  font-style: italic;
+  font-size: 1.8rem;
+}
+.logo span {
+  display: block;
+  font-size: 1rem;
+  margin-left: 1.6rem;
+  margin-top: -0.3rem;
+}
+.menu {
+  display: flex;
+  gap: 2rem;
+}
+.menu a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.menu-botao {
+  display: none;
+  background: none;
+  border: 1px solid var(--branco);
+  color: var(--branco);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+.botao-contato {
+  background: #e6ecec;
+  color: var(--grafite);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+}
+
+/* GUIA: hero. O corte diagonal do painel verde é o clip-path. */
+.hero {
+  position: relative;
+  min-height: 100vh;
+}
+.hero-foto {
+  background-image: url(imagens/foto-da-hero.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: bottom right;
+  position: absolute;
+  inset: 0;
+}
+.hero-painel {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 8rem 5vw 4rem;
+  width: 100%;
+  background: var(--verde);
+  box-shadow: inset;
+  color: var(--branco);
+  clip-path: polygon(0 0, 62% 0, 30% 100%, 0 100%);
+}
+.hero-painel > * {
+  max-width: 26rem;
+}
+.hero-painel h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-style: italic;
+}
+
+/* GUIA: serviços. */
+.servicos {
+  padding: 5rem 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.servicos-texto {
+  max-width: 34rem;
+  margin: 1rem 0 2.5rem 8vw;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.card:nth-child(even) {
+  margin-top: 2rem;
+}
+.card h3 {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  color: var(--branco);
+  font-size: 1.3rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* GUIA: sobre. Foto sobreposta ao bloco de texto. */
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 3rem 5vw 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sobre-texto {
+  display: grid;
+  gap: 1rem;
+  padding-right: 3rem;
+}
+.sobre-foto {
+  aspect-ratio: 4 / 3;
+  margin-top: 3rem;
+}
+
+/* GUIA: equipe. O corte em V no fim do bloco verde é o clip-path. */
+.equipe {
+  background: var(--branco);
+}
+.equipe-topo {
+  background: var(--verde);
+  color: rgb(19, 18, 18);
+  font-weight: bold;
+  padding: 4rem 20vw 9rem;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+}
+.equipe-topo h2 {
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.equipe-fotos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+}
+.equipe-fotos figure {
+  display: grid;
+  gap: 0.5rem;
+}
+.equipe-fotos img {
+  aspect-ratio: 3 / 4;
+}
+.equipe-fotos figcaption {
+  font-size: 0.9rem;
+}
+.equipe-categorias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+  margin: -3rem auto 0;
+  padding: 0 5vw 5rem;
+  position: relative;
+}
+.categoria {
+  position: relative;
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--grafite);
+}
+.categoria img {
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.categoria span {
+  position: absolute;
+  inset: auto 0.8rem 0.8rem 0.8rem;
+  color: var(--branco);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: left;
+}
+.categoria[aria-pressed="true"] {
+  outline: 4px solid var(--verde);
+  outline-offset: -4px;
+}
+.categoria[aria-pressed="true"] img, .categoria:hover img {
+  opacity: 0.85;
+}
+
+/* GUIA: destaques de eventos. */
+.destaque {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 22rem;
+}
+.destaque img {
+  height: 500px;
+}
+.destaque-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 5vw;
+}
+.destaque-texto p {
+  max-width: 26rem;
+}
+.destaque-verde {
+  background: var(--verde);
+  color: var(--branco);
+}
+.destaque-escuro {
+  background: var(--grafite);
+  color: var(--branco);
+}
+
+/* GUIA: rodapé. */
+.rodape {
+  background: var(--verde-escuro);
+  color: #e4e8e8;
+  padding: 4rem 5vw 1.5rem;
+}
+.rodape-chamada {
+  display: grid;
+  gap: 1rem;
+  max-width: 34rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #4a4c4f;
+}
+.rodape-colunas {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  font-size: 0.9rem;
+}
+.rodape-colunas h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+.rodape-colunas a, .rodape-colunas p {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.rodape-chamada .botao {
+  width: 190px;
+}
+.rodape-colunas a:hover {
+  text-decoration: underline;
+}
+.rodape-logo {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+.rodape-fim {
+  font-size: 0.8rem;
+  color: #aab2b2;
+}
+
+/* GUIA: tablet. */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sobre, .destaque {
+    grid-template-columns: 1fr;
+  }
+  .sobre-texto {
+    padding-right: 0;
+  }
+  .destaque-escuro img {
+    order: 2;
+  }
+  .rodape-colunas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* GUIA: celular. O menu vira botão e o painel do hero ocupa a largura toda. */
+@media (max-width: 640px) {
+    .cabecalho {
+    flex-wrap: wrap;
+    /* GUIA: no celular o fundo fica mais forte para o menu aberto ficar legível. */
+    background: rgba(10, 71, 71, 0.85);
+  }
+  .menu-botao {
+    display: block;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0.5rem 0 1rem;
+  }
+  .menu.aberto {
+    display: flex;
+  }
+  .hero-painel {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    padding-top: 9rem;
+    padding-bottom: 6rem;
+  }
+  .servicos-texto {
+    margin-left: 0;
+  }
+  .card:nth-child(even) {
+    margin-top: 0;
+  }
+  .equipe-fotos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .equipe-topo {
+    padding-bottom: 7rem;
+  }
+  .equipe-categorias {
+    grid-template-columns: 1fr;
+  }
+  .categoria {
+    aspect-ratio: 16 / 7;
+  }
+  .rodape-colunas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
