@@ -61,3 +61,38 @@ categorias.forEach((botao) => {
 
 // GUIA: ao abrir a página, começa mostrando Lideranças.
 mostrarEquipe('liderancas');
+
+// GUIA: animação de entrada ao rolar. Para animar mais elementos, adicione o seletor na lista abaixo.
+const elementosAnimados = document.querySelectorAll(
+  '.servicos h2, .servicos-texto, .card, .sobre-texto, .sobre-foto, .equipe-topo, .equipe-categorias, .destaque, .rodape-chamada, .rodape-colunas'
+);
+
+const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// GUIA: só ativa se o navegador suportar e se a pessoa não pediu menos animação.
+if ('IntersectionObserver' in window && !reduzirMovimento) {
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visivel');
+        observador.unobserve(entrada.target); // anima só na primeira vez
+      }
+    });
+  }, { threshold: 0.15 }); // 0.15 = anima quando 15% do elemento aparece
+
+  elementosAnimados.forEach((elemento, indice) => {
+  elemento.classList.add('revelar');
+
+  let vemDaEsquerda = indice % 2 === 0;
+
+  // GUIA: os cards de serviço alternam pela posição deles e entram em sequência, 0,1s de diferença.
+  if (elemento.classList.contains('card')) {
+    const posicao = Array.from(elemento.parentElement.children).indexOf(elemento);
+    vemDaEsquerda = posicao % 2 === 0;
+    elemento.style.transitionDelay = (posicao * 0.1) + 's';
+  }
+
+  elemento.classList.add(vemDaEsquerda ? 'revelar-esquerda' : 'revelar-direita');
+  observador.observe(elemento);
+  });
+}
